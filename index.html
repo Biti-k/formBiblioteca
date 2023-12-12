@@ -17,29 +17,46 @@
         body{
             height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
         }
         input{
-            margin: 5px;   
+            margin: 5px;
+        }
+        form{
+            position:relative;
         }
     </style>
     <title>Fomulario prestamo</title>
 </head>
 <body>
     <form action="#" method="POST" name="formTest" novalidate>
+        <h1>Préstamo Biblioteca</h1>
         <div class="form-group">
-          <label for="name">NAME:</label>
+          <label for="name">Nombre y apellidos:</label>
             <input type="text" id="name" name="name" data-rules="required" data-msg-custom="Fullname">
         </div>
         <div class="form-group">
-            <label for="name">TELEFONO:</label>
+            <label for="name">Teléfono:</label>
               <input type="text" id="telefono" name="telefono" data-rules="required" data-msg-custom="Telefono">
-          </div>
-          
-        <button type="submit">
-                ENVIAR
-        </button>
+        </div>
+        <div class="form-group">
+            <label for="name">Tarjeta Biblioteca:</label>
+              <input type="text" id="tarjeta" name="tarjeta" data-rules="required" data-msg-custom="Tarjeta" placeholder="L12345678">
+        </div>
+        <div class="form-group">
+            <label for="name">Fecha inicio préstamo:</label>
+              <input type="date" id="fechaInicio" name="fechaInicio" data-rules="required" data-msg-custom="fecha de inicio">
+        </div>
+        <div class="form-group">
+            <label for="name">Fecha devolución:</label>
+              <input type="date" id="fechaDev" name="fechaDev" data-rules="required" data-msg-custom="fecha de devolución">
+        </div>
+        <div class="form-group">
+            <label for="name">ISBN Libro:</label>
+              <input type="text" id="isbn" name="isbn" data-rules="required" data-msg-custom="ISBN libro">
+        </div>
+        <input type="submit" value="Enviar" name="submit">
+        <input type="reset" value="Vacíar formulario" name="vaciar">
         </form>
 </body>
 </html>

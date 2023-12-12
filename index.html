@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./Inspect-framework/inspect.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+                new Inspect({
+                'form' : 'formTest',
+                'touched' : true,
+                'tooltip' : true
+            }).toSubmit();
+        })
+    </script>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            margin: 5px;   
+        }
+    </style>
+    <title>Fomulario prestamo</title>
+</head>
+<body>
+    <form action="#" method="POST" name="formTest" novalidate>
+        <div class="form-group">
+          <label for="name">NAME:</label>
+            <input type="text" id="name" name="name" data-rules="required" data-msg-custom="Fullname">
+        </div>
+        <div class="form-group">
+            <label for="name">TELEFONO:</label>
+              <input type="text" id="telefono" name="telefono" data-rules="required" data-msg-custom="Telefono">
+          </div>
+          
+        <button type="submit">
+                ENVIAR
+        </button>
+        </form>
+</body>
+</html>

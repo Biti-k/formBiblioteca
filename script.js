@@ -1,3 +1,4 @@
+//Modelo objeto
 const objetoInicial = {
     "nombreApellidos" : "",
     "telefono" : "",
@@ -7,12 +8,14 @@ const objetoInicial = {
     "isbn" : ""
 }
 
+//Modelo inicial base para el array de formularios
 const arrayInicial = {
     "formularios" : [
 
     ]
 }
 
+//esta funcion carga los objetos al iniciar la pagina y los muestra despues del formulario
 function cargarObjetos(){
     let formularios = JSON.parse(localStorage.getItem("formularios"));
     if(formularios){    
@@ -25,21 +28,24 @@ function cargarObjetos(){
 
             for(let j = 0; j < keys.length; j++){
                 let divEl = document.createElement("div");
-                divEl.classList.add("elemento");
-                console.log(keys[j]);
-                console.log(formularios.formularios[i][keys[j]]);   
+                divEl.classList.add("elemento"); 
                 let uppercase = keys[j][0].toUpperCase() + keys[j].substring(1);
                 let p = document.createTextNode(uppercase + ": " + formularios.formularios[i][keys[j]]);
                 divEl.appendChild(p);
                 formularioEl.appendChild(divEl);
             }
+            let enlace = document.createElement("a");
+            enlace.href = "#inicio";
+            enlace.appendChild(document.createTextNode("↑"));
+            enlace.classList.add("arriba");
+            formularioEl.appendChild(enlace);
             formularioWr.appendChild(formularioEl);
         }
         document.getElementsByClassName("formularios")[0].appendChild(formularioWr);
     }
 }
 
-
+//Añade el objeto a la webStorage y recarga la pagina 👍
 function addObjeto(){
     let formularios = localStorage.getItem("formularios");
     let formulario = JSON.parse(JSON.stringify(objetoInicial));
@@ -58,18 +64,18 @@ function addObjeto(){
         array.formularios.push(formulario);
         localStorage.setItem("formularios", JSON.stringify(array));
     }
+    location.reload();
 }
 
 window.onload = function () {
-
     cargarObjetos();
     let msg = document.getElementById('mensajeFecha');
     let form = document.getElementById("form1");
-    //validadores globales
     let fechaDevolucionI = document.getElementById("fechaDev");
     fechaDevolucionI.disabled = true;
     let fechaInicioI = document.getElementById("fechaInicio");
 
+    //programacion de eventos blur para controlar que las fechas sean correctas, fecha Inicio antes que fecha devolucion, y no puedes meter fecha devolucion sin haber puesto fecha inicio.
     fechaInicioI.addEventListener('blur', () => {
         if(fechaInicioI.value != ""){
             fechaDevolucionI.disabled = false;
@@ -87,7 +93,7 @@ window.onload = function () {
             msg.textContent = "";
         }
     });
-
+    //validadores globales (se declaran aqui y se usan en el codigo html para validar los campos, usando regex)
     Pristine.addValidator("n_telefono", function(value) {
         // here `this` refers to the respective input element
         let expresion = /^[1-9][0-9]{8}$/;
@@ -134,19 +140,3 @@ window.onload = function () {
 
 
 
-
-/* function scroll(){
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', function() {
-    // scroll down
-    if (lastScroll < window.pageYOffset) {
-        window.scrollBy(0, window.innerHeight);
-    }
-    // scroll up
-    else if (lastScroll > window.pageYOffset) {
-        window.scrollBy(0, window.innerHeight * -1);
-    }
-    lastScroll = window.pageYOffset;
-    });
-} */

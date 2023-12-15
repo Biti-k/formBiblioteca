@@ -84,12 +84,56 @@ form {
 
 .formularios{
   text-align: center;
+  min-height: 100vh;
+  scroll-snap-align: center;
+  position: relative;
+}
+.elementos{
   height: 100vh;
   scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 30px;
+  position: relative;
+}
+.elemento{
+  margin: 5px;
+}
+.tituloForm{
+  position: absolute;
+  top: 50px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  text-shadow:#9dc77a 2px 2px 2px;
+  text-decoration: underline;
 }
 .fullpage{
   scroll-snap-type: y mandatory;
   height: 100vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+.arriba{
+  position:absolute;
+  top: 80%;
+  text-decoration: none;
+  font-size: 4rem;
+  color:#5F6F52;
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes bounce {
+  0%{
+    transform: translateY(0);
+  }
+
+  100%{
+    transform: translateY(-20px);
+  }
 }

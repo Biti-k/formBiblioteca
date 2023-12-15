@@ -4,55 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="pristine-framework/pristine.js"></script>
-    <script>
-        window.onload = function () {
-
-            var form = document.getElementById("form1");
-
-            // create the pristine instance
-            var pristine = new Pristine(form);
-
-            form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            
-            // check if the form is valid
-            var valid = pristine.validate(); // returns true or false
-
-            });
-        };
-    </script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
+
     <title>Fomulario prestamo</title>
 </head>
 <body>
-    <form action="#" method="POST" id="form1" novalidate>
-        <h1>Préstamo Biblioteca</h1>
-        <div class="form-group">
-          <label for="name">Nombre y apellidos:</label>
-            <input type="text" id="name" name="name">
-        </div>
-        <div class="form-group">
-            <label for="name">Teléfono:</label>
-              <input type="text" id="telefono" name="telefono" required>
-        </div>
-        <div class="form-group">
-            <label for="name">Tarjeta Biblioteca:</label>
-              <input type="text" id="tarjeta" name="tarjeta" placeholder="L12345678">
-        </div>
-        <div class="form-group">
-            <label for="name">Fecha inicio préstamo:</label>
-              <input type="date" id="fechaInicio" name="fechaInicio">
-        </div>
-        <div class="form-group">
-            <label for="name">Fecha devolución:</label>
-              <input type="date" id="fechaDev" name="fechaDev" >
-        </div>
-        <div class="form-group">
-            <label for="name">ISBN Libro:</label>
-              <input type="text" id="isbn" name="isbn">
-        </div>
-        <input type="submit" value="Enviar" name="submit">
-        <input type="reset" value="Vacíar formulario" name="vaciar">
-        </form>
+  <div class="fullpage">
+    <div class="form-container section">
+      <form action="#" method="POST" id="form1">
+          <h1>Préstamo Biblioteca</h1>
+          <div class="form-group">
+            <label for="name">Nombre y apellidos:</label>
+              <input type="text" id="name" name="name" required data-pristine-nombre-apellidos>
+          </div>
+          <div class="form-group">
+              <label for="name">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required data-pristine-n_telefono>
+          </div>
+          <div class="form-group">
+              <label for="name">Tarjeta Biblioteca:</label>
+                <input type="text" id="tarjeta" name="tarjeta" placeholder="L12345678" required data-pristine-tarjeta>
+          </div>
+          <div class="form-group">
+              <label for="name">Fecha inicio préstamo:</label>
+                <input type="date" id="fechaInicio" name="fechaInicio" required>
+          </div>
+          <div class="form-group">
+              <label for="name">Fecha devolución:</label>
+                <input type="date" id="fechaDev" name="fechaDev" required>
+          </div>
+          <p id="mensajeFecha" class="pristine-error"></p>
+          <div class="form-group">
+              <label for="name">ISBN Libro:</label>
+                <input type="text" id="isbn" name="isbn" required data-pristine-isbn placeholder="1234567891">
+          </div>
+          <input type="submit" value="Enviar" name="submit" id="submit">
+          <input type="reset" value="Vacíar formulario" name="vaciar" id="reset">
+      </form>
+    </div>
+    <h1 style="text-align:center;">Formularios guardados</h1>
+    <div class="formularios">
+
+    </div>
+  </div>
 </body>
 </html>
